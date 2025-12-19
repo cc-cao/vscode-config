@@ -21,13 +21,14 @@
     "editor.fontFamily": "JetbrainsMono NF Light",
     // "editor.lineHeight": 1.2,
     "editor.accessibilitySupport": "off",
+    // "editor.glyphMargin": false,
     "editor.smoothScrolling": true,
     "editor.fontSize": 15,
     "editor.fontLigatures": true,
     "editor.tabSize": 4,
     "editor.detectIndentation": false,
     "editor.renderWhitespace": "none",
-    "editor.renderLineHighlight": "line",
+    "editor.renderLineHighlight": "none",
     "editor.roundedSelection": false,
     "editor.renderControlCharacters": false,
     "editor.occurrencesHighlight": "off",
@@ -58,6 +59,8 @@
     },
     "files.associations": {
         ".clang*": "yaml",
+        "CMakeLists.txt": "cmake",
+        "*.cmake": "cmake",
     },
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.fontLigatures.enabled": true,
@@ -111,11 +114,6 @@
         "editor.defaultFormatter": "Vue.volar",
         "editor.tabSize": 2
     },
-    // python lsp
-    "python.analysis.autoImportCompletions": true,
-    "python.analysis.autoFormatStrings": true,
-    "python.analysis.typeCheckingMode": "standard",
-    "python.terminal.activateEnvironment": true,
     // c/cpp lsp
     "clangd.path": "clangd",
     "clangd.arguments": [
@@ -135,12 +133,12 @@
     "clangd.enableCodeCompletion": true,
     "lldb.suppressUpdateNotifications": true,
     // build tool
+    "cmake.cmakePath": "cmake",
+    "cmake.loggingLevel": "error",
     "cmake.configureOnOpen": false,
     "cmake.allowUnsupportedPresetsVersions": true,
     "cmake.parallelJobs": 12,
     "cmake.options.statusBarVisibility": "hidden",
-    "xmake.debugConfigType": "codelldb",
-    "xmake.compileCommandsDirectory": "build",
     // custom ui css
     "custom-ui-style.electron": {
         "frame": false,
@@ -148,7 +146,7 @@
         "vibrancy": "under-window", // fullscreen-ui, sidebar
         "backgroundColor": "#00000000",
         "visualEffectState": "active",
-        "backgroundMaterial": "mica",  // acrylic, mica
+        "backgroundMaterial": "mica", // acrylic, mica
     },
     "custom-ui-style.font.sansSerif": "JetbrainsMono NF Light",
     "custom-ui-style.stylesheet": {
@@ -177,11 +175,10 @@
         ".monaco-workbench .part.sidebar .title-actions .actions-container": "display: none;",
         ".monaco-workbench .part.sidebar > .title,.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container": "app-region: drag;",
         ".monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container > .tab": "app-region: no-drag;",
+        ".monaco-editor .native-edit-context:focus-visible": "color: transparent !important;"
     },
-    
     "workbench.colorCustomizations": {
-        // 这里一旦透明掉当前行的焦点框则行首必然显现出白色系统焦点光标无法移除,不知道怎么搞
-        // "focusBorder": "#FF678100", 
+        "focusBorder": "#FF678100", 
         "editorCursor.foreground": "#FF6781",
         "welcomePage.background": "#00000000",
         "walkThrough.embeddedEditorBackground": "#00000000",
@@ -193,6 +190,7 @@
         "editorSuggestWidget.background": "#1D1C1EF0",
         "editorHoverWidget.border": "#FF6781",
         "editor.lineHighlightBorder": "#00000000",
+        // "editorLineNumber.activeForeground": "#FF6781",
         "editor.lineHighlightBackground": "#00000000",
         "editor.compositionBorder": "#00000000",
         "editor.selectionHighlightBorder": "#00000000",
@@ -221,7 +219,7 @@
         "statusBar.noFolderBackground": "#00000000",
         "statusBar.debuggingBackground": "#00000000",
         "statusBar.border": "#00000000",
-        "statusBar.focusBorder":"#00000000",
+        "statusBar.focusBorder": "#00000000",
         // Tab
         "tab.activeBackground": "#00000000",
         "tab.inactiveBackground": "#00000000",
