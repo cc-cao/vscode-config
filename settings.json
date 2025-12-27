@@ -9,16 +9,16 @@
     "workbench.editor.wrapTabs": false,
     "workbench.tree.indent": 20,
     "workbench.secondarySideBar.showLabels": false,
-    "window.titleBarStyle": "native",
+    "window.titleBarStyle": "custom",
     "workbench.list.smoothScrolling": true,
     "workbench.tree.renderIndentGuides": "none",
     "workbench.editor.editorActionsLocation": "hidden",
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
     "workbench.layoutControl.type": "toggles",
-    "workbench.activityBar.location": "hidden",
+    "workbench.activityBar.location": "bottom",
     "workbench.editor.highlightModifiedTabs": false,
-    "editor.fontFamily": "JetbrainsMono NF Light",
+    "editor.fontFamily": "JetbrainsMono NF",
     // "editor.lineHeight": 1.2,
     "editor.accessibilitySupport": "off",
     // "editor.glyphMargin": false,
@@ -55,7 +55,9 @@
     "files.eol": "\n",
     "files.exclude": {
         "**/.localized": true,
-        "**/__pycache__": true
+        "**/__pycache__": true,
+        "**/desktop.ini": true,
+        "**/.DS_Store": true,
     },
     "files.associations": {
         ".clang*": "yaml",
@@ -92,7 +94,8 @@
         "ms-vscode.cmake-tools",
         "ms-vscode.js-debug-companion",
         "rust-lang.rust-analyzer",
-        "tamasfe.even-better-toml"
+        "tamasfe.even-better-toml",
+        "vadimcn.vscode-lldb"
     ],
     // web lsp
     "typescript.updateImportsOnFileMove.enabled": "always",
@@ -114,6 +117,9 @@
         "editor.defaultFormatter": "Vue.volar",
         "editor.tabSize": 2
     },
+    // python
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "standard",
     // c/cpp lsp
     "clangd.path": "clangd",
     "clangd.arguments": [
@@ -141,22 +147,24 @@
     "cmake.options.statusBarVisibility": "hidden",
     // custom ui css
     "custom-ui-style.electron": {
-        "frame": false,
-        "transparent": true,
-        "vibrancy": "under-window", // fullscreen-ui, sidebar
+        "frame": true,
+        "transparent": false,
+        "vibrancy": "sidebar", // fullscreen-ui, sidebar
         "backgroundColor": "#00000000",
         "visualEffectState": "active",
         "backgroundMaterial": "mica", // acrylic, mica
     },
-    "custom-ui-style.font.sansSerif": "JetbrainsMono NF Light",
+    "custom-ui-style.font.sansSerif": "JetbrainsMono NF",
     "custom-ui-style.stylesheet": {
+        ".monaco-workbench .part.titlebar>.titlebar-container>.titlebar-center>.window-title": "display: none;",
+        ".monaco-workbench .part.titlebar": "background-color: transparent !important;",
+        ".monaco-editor .find-widget": "border-radius: 5px; border-top: 1px solid var(--vscode-widget-border);",
         "body > .monaco-workbench": " background-color: initial;",
         ".notification-toast": "box-shadow: none !important",
         ".quick-input-widget.show-file-icons": "box-shaodw: none !important",
-        ".quick-input-widget": "top: 25vh !important",
+        ".quick-input-widget": "top: 25vh !important;",
         ".quick-input-list .scrollbar": "display: none",
         ".monaco-action-bar.quick-input-inline-action-bar": "display: none",
-        ".editor-widget.find-widget": "boxshaodw: none; border-radius: 4px",
         ".monaco-workbench .part.editor > .content .editor-group-container > .title.title-border-bottom:after": "display: none",
         ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "outline: none !important",
         ".monaco-list-row.focused": "outline: none !important",
@@ -173,14 +181,15 @@
         ".monaco-scrollable-element>.scrollbar>.slider": "display: none;",
         ".monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab.active.tab-border-bottom>.tab-border-bottom-container": "display: none !important;",
         ".monaco-workbench .part.sidebar .title-actions .actions-container": "display: none;",
-        ".monaco-workbench .part.sidebar > .title,.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container": "app-region: drag;",
-        ".monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container > .tab": "app-region: no-drag;",
-        ".monaco-editor .native-edit-context:focus-visible": "color: transparent !important;"
+        // ".monaco-workbench .part.sidebar > .title,.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container": "app-region: drag;",
+        // ".monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container > .tab": "app-region: no-drag;",
+        ".monaco-editor .native-edit-context:focus-visible": "color: transparent !important;",
+        ".monaco-list-rows": "background: transparent !important;",
     },
     "workbench.colorCustomizations": {
         "focusBorder": "#FF678100", 
         "editorCursor.foreground": "#FF6781",
-        "welcomePage.background": "#00000000",
+        "welcomePage.background": "#04020200",
         "walkThrough.embeddedEditorBackground": "#00000000",
         "editorGroup.emptyBackground": "#00000000",
         "editor.background": "#00000000",
@@ -194,54 +203,51 @@
         "editor.lineHighlightBackground": "#00000000",
         "editor.compositionBorder": "#00000000",
         "editor.selectionHighlightBorder": "#00000000",
-        "editorStickyScroll.background": "#1D1C1EAF",
+        "editorStickyScroll.background": "#1D1C1EF0",
+        "editorStickyScroll.shadow": "#00000000",
         "editorStickyScrollGutter.background": "#1D1C1EF0",
         "terminalStickyScroll.background": "#1D1C1EF0",
-        // button
         "button.background": "#1D1C1E70",
         "button.hoverBackground": "#1D1C1EF0",
-        // tab
         "tab.border": "#00000000",
         "tab.hoverBackground": "#1D1C1EF0",
-        // Side Bar / Activity Bar
-        "sideBar.border": "#1D1C1EF0",
+        "titleBar.activeBackground": "#00000000",
+        "titleBar.inactiveBackground": "#00000000",
+        "sideBar.border": "#1D1C1E50",
         "sideBar.background": "#00000000",
         "sideBarSectionHeader.background": "#00000000",
-        "sideBarStickyScroll.background": "#1D1C1EAF",
+        "sideBarStickyScroll.background": "#1D1C1EF0",
         "activityBar.background": "#00000000",
         "activityBar.inactiveForeground": "#00000000",
-        // Panel（终端 / 输出 / 调试控制台）
         "panel.background": "#00000000",
-        "panel.border": "#1D1C1EF0",
+        "panel.border": "#1D1C1E50",
+        "terminal.border": "#1D1C1E50",
         "terminal.background": "#00000000",
-        // 状态栏
         "statusBar.background": "#00000000",
         "statusBar.noFolderBackground": "#00000000",
         "statusBar.debuggingBackground": "#00000000",
         "statusBar.border": "#00000000",
         "statusBar.focusBorder": "#00000000",
-        // Tab
         "tab.activeBackground": "#00000000",
         "tab.inactiveBackground": "#00000000",
         "tab.unfocusedActiveBackground": "#00000000",
         "tab.unfocusedInactiveBackground": "#00000000",
-        // 下拉 / 弹窗
         "dropdown.background": "#00000000",
-        "menu.background": "#1D1C1E50",
+        "menu.background": "#1D1C1EF0",
+        "menu.border": "#FF6781",
         "quickInput.background": "#1D1C1EF0",
-        // 所有输入框（包括搜索栏）
-        "input.background": "#00000030",
+        "widget.border": "#FF6781",
+        "input.background": "#1D1C1E50",
         "inputOption.activeBackground": "#1D1C1EF0",
-        // 搜索 / 查找小浮窗（Ctrl+F / Cmd+F）
         "editorWidget.background": "#1D1C1EF0",
         "editorWidget.border": "#FF6781",
-        "notifications.background": "#1D1C1EF0",
         "notifications.border": "#FF6781",
-        // 侧边栏选中行背景
-        "list.activeSelectionBackground": "#00000020", // 被选中行背景
-        "list.inactiveSelectionBackground": "#00000000", // 非焦点时选中行背景
-        "list.focusBackground": "#00000020", // 聚焦行背景
-        "list.hoverBackground": "#00000000" // 鼠标悬停背景
+        "notifications.background": "#1D1C1EF0",
+        "notificationCenterHeader.background": "#1D1C1EF0",
+        "list.activeSelectionBackground": "#FF6781E0",
+        "list.inactiveSelectionBackground": "#00000000",
+        "list.focusBackground": "#00000000", 
+        "list.hoverBackground": "#00000000" 
     },
     // others
     "remote.autoForwardPortsSource": "hybrid",
